@@ -5,6 +5,8 @@
 #include <fstream>
 #include <stdexcept>
 #include <string>
+#include <pwd.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[]) {
     // -------------------------- Noise parameters & random number generator -------------------------------------------
@@ -86,6 +88,9 @@ int main(int argc, char *argv[]) {
     file.open(out_file);
     if (!file.is_open()) {
         std::cout << "Could not open file at: " << out_file << std::endl;
+        struct passwd *pw = getpwuid(getuid());
+        const char *homedir = pw->pw_dir;
+        std::cout << "This is where I am: " << std::string(homedir) << std::endl;
         return 1;
     }
 
