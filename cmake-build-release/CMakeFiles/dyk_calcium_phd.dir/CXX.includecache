@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lukas/CLionProjects/dyk-calcium-phd/main.cpp
+iostream
+-
+vector
+-
+random
+-
+cmath
+-
+fstream
+-
+stdexcept
+-
+string
+-
+pwd.h
+-
+unistd.h
+-
+
