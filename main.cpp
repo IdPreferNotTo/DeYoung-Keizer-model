@@ -3,7 +3,6 @@
 #include <random>
 #include <cmath>
 #include <fstream>
-#include <stdexcept>
 #include <string>
 #include <pwd.h>
 #include <unistd.h>
@@ -107,7 +106,7 @@ int main(int argc, char *argv[]) {
     double p_cai; // probability to change the state of the inhibition Ca2+ binding site (occupied/unoccupied)
     double p; // probability to change the channel state
 
-    while(t < 600){
+    while(t < 10000){
         float N_open_channel = 0;
         for(auto &sub_unit: channel_states){
             // For every channel (with state x) in a cluster
@@ -188,9 +187,10 @@ int main(int argc, char *argv[]) {
         ca += (j1 + j2 - j3)*dt;
         t += dt;
         out_count += 1;
-        if(out_count==1000){
+        if(out_count==5000){
             out_count = 0;
-            file << t << " " << ca << " " << j1 << " " << j2 << " " << j3 << " " << N_open_channel/N_total <<"\n";
+            //file << t << " " << ca << " " << j1 << " " << j2 << " " << j3 << " " << N_open_channel/N_total <<"\n";
+            file << t << " " << ca << " " << j1 << " " << N_open_channel/N_total <<"\n";
         }
     }
 
